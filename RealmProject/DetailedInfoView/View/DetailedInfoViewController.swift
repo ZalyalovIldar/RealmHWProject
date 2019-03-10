@@ -160,7 +160,14 @@ class DetailedInfoViewController:
             mediaImageView.isHidden = false
             textView.isHidden = true
             playVideoButton.isHidden = true
-            editButton.isHidden = false
+            
+            if let photo = currentObject as? Photo, photo.imageUrl != nil {
+                editButton.isHidden = true
+            }
+            else {
+                editButton.isHidden = false
+            }
+            
             break
             
         case .Video:
