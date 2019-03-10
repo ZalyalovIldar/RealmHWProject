@@ -25,12 +25,12 @@ final class FilesRouter: FilesRouterInput, MediaPickerDelegate {
     
     // MARK: - Files Router Input
     
-    func showEnterTitleAlert(completionBlock: @escaping (String) -> Void) {
+    func showEnterTitleAlert(completionBlock: @escaping (String?) -> Void) {
         
         let alert = UIAlertController(title: AlertTitles.AlertTitle.rawValue, message: nil, preferredStyle: UIAlertController.Style.alert)
         
         alert.addTextField { (textField) in
-            textField.placeholder = ""
+            textField.placeholder = AlertTitles.TitlePlaceholder.rawValue
         }
         
         let cancelAction = UIAlertAction(title: AlertTitles.Cancel.rawValue, style: .default, handler: nil)
@@ -48,7 +48,8 @@ final class FilesRouter: FilesRouterInput, MediaPickerDelegate {
         view.present(alert, animated: true, completion: nil)
     }
     
-    func showEnterNoteTitleAndTextAlert(completionBlock: @escaping (String, String) -> Void) {
+    
+    func showEnterNoteTitleAndTextAlert(completionBlock: @escaping (String?, String?) -> Void) {
         
         let alert = UIAlertController(title: AlertTitles.AlertTitle.rawValue, message: nil, preferredStyle: UIAlertController.Style.alert)
         
@@ -75,6 +76,60 @@ final class FilesRouter: FilesRouterInput, MediaPickerDelegate {
     }
     
     
+    func showEnterUrlAlert(completionBlock: @escaping (String?, String?) -> Void) {
+        
+        let alert = UIAlertController(title: AlertTitles.URLTitle.rawValue, message: nil, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = AlertTitles.TitlePlaceholder.rawValue
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = AlertTitles.URLPlaceholder.rawValue
+        }
+        
+        let cancelAction = UIAlertAction(title: AlertTitles.Cancel.rawValue, style: .default, handler: nil)
+        let nextAction = UIAlertAction(title: AlertTitles.Next.rawValue, style: .default) { (alertAction) in
+            
+            if let title = alert.textFields![0].text, let urlString = alert.textFields![1].text {
+                completionBlock(title, urlString)
+            }
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(nextAction)
+        view.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func showErrorAlert(with title: String?) {
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: AlertTitles.Cancel.rawValue, style: .default, handler: nil))
+        view.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func showImagePreviewAlert(title: String?, imageData: Data?, imageUrlString: String?, completionBlock: @escaping (String?, ImageSaveMethod, String?) -> Void) {
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: UIAlertController.Style.alert)
+        
+        let image = UIImage(data: imageData!)
+        
+        alert.addImage(image: image!)
+        
+        alert.addAction(UIAlertAction(title: ImageSaveMethod.Cache.rawValue, style: .default) { (alertAction) in
+            completionBlock(title, ImageSaveMethod.Cache, imageUrlString)
+        })
+        alert.addAction(UIAlertAction(title: ImageSaveMethod.Memory.rawValue, style: .default) { (alertAction) in
+            completionBlock(title, ImageSaveMethod.Memory, nil)
+        })
+        alert.addAction(UIAlertAction(title: AlertTitles.Cancel.rawValue, style: .default, handler: nil))
+        
+        view.present(alert, animated: true, completion: nil)
+    }
+    
+    
     func showImagePicker(title: String?, type: MediaType) {
         mediaPickerManager?.showImagePicker(view: view, type: type)
     }
@@ -86,7 +141,9 @@ final class FilesRouter: FilesRouterInput, MediaPickerDelegate {
         filesPresenter.addPhoto(currentFolderId: self.view.currentFolderId, title: currentTitle, imageData: imageData)
     }
     
-    func handleSelectedVideo(videoPath: String?) {
-        filesPresenter.addVideo(currentFolderId: self.view.currentFolderId, title: currentTitle,videoPath: videoPath)
+    
+    func handleSelectedVideo(videoUrlPath: URL?) {
+        filesPresenter.addVideo(currentFolderId: self.view.currentFolderId, title: currentTitle, videoUrlPath: videoUrlPath)
     }
+    
 }

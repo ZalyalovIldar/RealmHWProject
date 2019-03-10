@@ -25,12 +25,20 @@ protocol FilesInteractorInput: AnyObject {
     ///   - title: title of folder
     func addNewPhoto(folderId: String?, title: String?, imageData: Data?)
     
+    /// Creates new photo object
+    ///
+    /// - Parameters:
+    ///   - folderId: folder identificator
+    ///   - title: photo title
+    ///   - urlString: image url
+    func cacheNewPhoto(folderId: String?, title: String?, urlString: String?)
+    
     /// Adds new video in current folder
     ///
     /// - Parameters:
     ///   - folderId: current folder
     ///   - title: title of folder
-    func addNewVideo(folderId: String?, title: String?, videoPath: String?)
+    func addNewVideo(folderId: String?, title: String?, videoUrlPath: URL?)
     
     /// Adds new note in current folder
     ///
@@ -51,4 +59,9 @@ protocol FilesInteractorInput: AnyObject {
     ///
     /// - Parameter object: given object
     func deleteObject(object: Object)
+
+    /// Handles image
+    ///
+    /// - Parameter url: image url
+    func handleImageWithURL(title: String?, url: URL?)
 }

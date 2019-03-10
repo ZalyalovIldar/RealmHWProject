@@ -17,4 +17,14 @@ protocol FilesInteractorOutput: AnyObject {
     
     /// Gets root folder
     func getRootFolder()
+    
+    /// Calls alert with image
+    ///
+    /// - Parameter imageData: image data
+    func showImagePreviewAlert(title: String?, imageData: Data?, imageUrlString: String?)
+    
+    /// Calls alert with image
+    ///
+    /// - Parameter imageData: image data
+    func showErrorAlert(with title: String?)
 }

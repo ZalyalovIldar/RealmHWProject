@@ -10,6 +10,7 @@ import Foundation
 
 class DetailedInfoInteractor: DetailedInfoInteractorInput {
  
+    var networkManager: NetworkManagerProtocol!
     var databaseManager: DatabaseManagerProtocol!
     var detailedInfoPresenter: DetailedInfoInteractorOutput!
     
@@ -31,9 +32,9 @@ class DetailedInfoInteractor: DetailedInfoInteractorInput {
         }
     }
     
-    func attachNewVideo(objectId: String?, videoPath: String?) {
+    func attachNewVideo(objectId: String?, videoUrlPath: URL?) {
         
-        guard let currentObjectId = objectId, let path = videoPath else { return }
+        guard let currentObjectId = objectId, let path = videoUrlPath else { return }
         
         if let currentVideo = databaseManager
             .getObjects(with: Video.self)?
@@ -41,7 +42,7 @@ class DetailedInfoInteractor: DetailedInfoInteractorInput {
             .first{
             
             databaseManager.performTransaction {
-                currentVideo.videoPath = path
+                currentVideo.videoPath = path.absoluteString
             }
         }
     }
@@ -57,6 +58,24 @@ class DetailedInfoInteractor: DetailedInfoInteractorInput {
             
             databaseManager.performTransaction {
                 currentNote.text = text
+            }
+        }
+    }
+    
+    func getImage(url: String?) {
+        
+        guard let urlString = url, let currentUrl = URL(string: urlString) else { return }
+        
+        networkManager.obtainImage(with: currentUrl) { (result) in
+            
+            switch result {
+                
+            case .Success(let data):
+                self.detailedInfoPresenter.setImage(imageData: data, imageUrl: url)
+                
+            case .Error(let error):
+                print(error.localizedCapitalized)
+                
             }
         }
     }

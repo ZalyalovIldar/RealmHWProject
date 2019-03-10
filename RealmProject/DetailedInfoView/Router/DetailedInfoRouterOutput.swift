@@ -22,6 +22,6 @@ protocol DetailedInfoRouterOutput: AnyObject {
     /// - Parameters:
     ///   - currentObjectId: current object identificator
     ///   - videoPath: path of the video
-    func changeVideo(currentObjectId: String?, videoPath: String?)
+    func changeVideo(currentObjectId: String?, videoUrlPath: URL?)
     
 }

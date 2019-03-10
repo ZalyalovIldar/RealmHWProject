@@ -38,9 +38,21 @@ enum AlertTitles: String {
     
     case Cancel = "Cancel"
     case Next = "Next"
+    case Close = "Close"
+    case URLTitle = "Enter url of image"
     case AlertTitle = "Fill the fields"
     case TextPlaceholder = "Text"
     case TitlePlaceholder = "Title"
+    case URLPlaceholder = "URL"
 }
 
+enum ImageSaveMethod: String {
+    case Cache = "Cache"
+    case Memory = "Memory"
+}
+
+let transformDataToImageError = "Cannot transform data to image"
+
 let rootFolderTitle = "Files"
+
+let videoDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/Videos"

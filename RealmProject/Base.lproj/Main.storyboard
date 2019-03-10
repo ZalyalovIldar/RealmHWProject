@@ -67,30 +67,13 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="91" translatesAutoresizingMaskIntoConstraints="NO" id="ODV-uz-eRa">
-                                                                    <rect key="frame" x="0.0" y="35" width="219" height="15"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArH-aH-96J">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="37.5" height="15"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLb-o0-9pt">
-                                                                            <rect key="frame" x="128.5" y="0.0" width="90.5" height="15"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="15" id="qrk-as-lIS"/>
-                                                                    </constraints>
-                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ArH-aH-96J">
+                                                                    <rect key="frame" x="0.0" y="35" width="35.5" height="15"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="ODV-uz-eRa" secondAttribute="trailing" id="O59-8O-eiY"/>
-                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
@@ -109,7 +92,6 @@
                                         <connections>
                                             <outlet property="dateOfCreationLabel" destination="ArH-aH-96J" id="a8j-do-BCA"/>
                                             <outlet property="iconImageView" destination="LrO-C0-eaw" id="toe-Nr-RXM"/>
-                                            <outlet property="sizeLabel" destination="gLb-o0-9pt" id="Ltt-P7-Iuf"/>
                                             <outlet property="titleLabel" destination="cBa-Pb-Edh" id="ODi-36-hnO"/>
                                         </connections>
                                     </tableViewCell>
@@ -135,7 +117,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NVf-Vw-b89">
-                                        <rect key="frame" x="99.5" y="0.0" width="36" height="60"/>
+                                        <rect key="frame" x="75" y="0.0" width="36" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="X5d-KP-ef0"/>
                                         </constraints>
@@ -145,7 +127,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAa-6V-rnf">
-                                        <rect key="frame" x="199.5" y="0.0" width="36" height="60"/>
+                                        <rect key="frame" x="149.5" y="0.0" width="36" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="9zj-P1-mLU"/>
                                         </constraints>
@@ -155,13 +137,20 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npL-rU-ytx">
-                                        <rect key="frame" x="299" y="0.0" width="36" height="60"/>
+                                        <rect key="frame" x="224.5" y="0.0" width="36" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="fLf-VC-Xdl"/>
                                         </constraints>
                                         <state key="normal" image="add-video"/>
                                         <connections>
                                             <action selector="addVideoButtonPressed:" destination="tM0-A5-1E6" eventType="touchUpInside" id="eub-LP-Eij"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2P-or-9Wd">
+                                        <rect key="frame" x="299" y="0.0" width="36" height="60"/>
+                                        <state key="normal" image="cloud"/>
+                                        <connections>
+                                            <action selector="uploadImageFromInternetButtonPressed:" destination="tM0-A5-1E6" eventType="touchUpInside" id="i5L-vS-5ll"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -211,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="PdH-gF-P92">
-                                <rect key="frame" x="0.0" y="30" width="375" height="360"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="440"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Zx-dc-FQY">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -232,7 +221,20 @@
                                             <outlet property="delegate" destination="nCU-Cf-b5j" id="YhN-Xl-tvl"/>
                                         </connections>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpU-68-3Yb">
+                                        <rect key="frame" x="0.0" y="400" width="375" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="pSt-vP-GpV"/>
+                                        </constraints>
+                                        <state key="normal" title="Play video"/>
+                                        <connections>
+                                            <action selector="playVideoButtonPressed:" destination="nCU-Cf-b5j" eventType="touchUpInside" id="OPF-Y4-5TA"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="qpU-68-3Yb" firstAttribute="centerX" secondItem="PdH-gF-P92" secondAttribute="centerX" id="aow-3v-hr9"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cBI-ns-1al">
                                 <rect key="frame" x="15" y="587" width="345" height="40"/>
@@ -263,6 +265,7 @@
                     <connections>
                         <outlet property="editButton" destination="cBI-ns-1al" id="JPq-BG-iDa"/>
                         <outlet property="mediaImageView" destination="3Zx-dc-FQY" id="eln-Ce-yFr"/>
+                        <outlet property="playVideoButton" destination="qpU-68-3Yb" id="fU9-0t-Weg"/>
                         <outlet property="textView" destination="X4w-yR-RAe" id="UqX-UZ-9f0"/>
                     </connections>
                 </viewController>
@@ -281,6 +284,7 @@
         <image name="add-note" width="36" height="36"/>
         <image name="add-photo" width="36" height="36"/>
         <image name="add-video" width="36" height="36"/>
+        <image name="cloud" width="36" height="36"/>
         <image name="folder" width="46.545455932617188" height="46.545455932617188"/>
     </resources>
 </document>

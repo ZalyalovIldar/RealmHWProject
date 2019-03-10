@@ -15,7 +15,7 @@ class DetailedInfoPresenter:
     
     var detailedInfoRouter: DetailedInfoRouterInput!
     var detailedInfoInteractor: DetailedInfoInteractorInput!
-    var view: DetailedInfoViewInput!
+    weak var view: DetailedInfoViewInput!
     
     
     // MARK: - View Output
@@ -32,6 +32,10 @@ class DetailedInfoPresenter:
         detailedInfoInteractor.attachNewText(objectId: noteId, text: text)
     }
     
+    func getImage(with url: String?) {
+        detailedInfoInteractor.getImage(url: url)
+    }
+    
     
     // MARK: - Router Output
     
@@ -39,7 +43,15 @@ class DetailedInfoPresenter:
         detailedInfoInteractor.attachNewPhoto(objectId: currentObjectId, imageData: imageData)
     }
     
-    func changeVideo(currentObjectId: String?, videoPath: String?) {
-        detailedInfoInteractor.attachNewVideo(objectId: currentObjectId, videoPath: videoPath)
+    func changeVideo(currentObjectId: String?, videoUrlPath: URL?) {
+        detailedInfoInteractor.attachNewVideo(objectId: currentObjectId, videoUrlPath: videoUrlPath)
     }
+    
+    
+    // MARK: - Interactor Output
+    
+    func setImage(imageData: Data?, imageUrl: String?) {
+        view?.setImage(imageData: imageData, imageUrl: imageUrl)
+    }
+    
 }

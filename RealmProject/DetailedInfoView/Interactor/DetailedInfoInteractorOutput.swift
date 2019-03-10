@@ -10,4 +10,9 @@ import Foundation
 
 protocol DetailedInfoInteractorOutput: AnyObject {
     
+    /// Handles dowloaded image in interactor
+    ///
+    /// - Parameter imageData: image data
+    /// - Parameter imageUrl: image url
+    func setImage(imageData: Data?, imageUrl: String?)
 }

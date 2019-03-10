@@ -22,7 +22,7 @@ protocol DetailedInfoInteractorInput: AnyObject {
     /// - Parameters:
     ///   - objectId: video id
     ///   - videoPath: video path from local storage
-    func attachNewVideo(objectId: String?, videoPath: String?)
+    func attachNewVideo(objectId: String?, videoUrlPath: URL?)
     
     /// Attaches new text
     ///
@@ -30,4 +30,9 @@ protocol DetailedInfoInteractorInput: AnyObject {
     ///   - objectId: note id
     ///   - text: new text
     func attachNewText(objectId: String?, text: String?)
+    
+    /// Calls network manager to get image
+    ///
+    /// - Parameter url: image url
+    func getImage(url: String?)
 }

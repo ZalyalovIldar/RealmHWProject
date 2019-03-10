@@ -24,4 +24,9 @@ protocol DetailedInfoViewOutput: AnyObject {
     ///
     /// - Parameter currentObjectId: current object identificator
     func attachNewText(noteId: String?, text: String?)
+    
+    /// Calls interactor to dowload image
+    ///
+    /// - Parameter url: image url
+    func getImage(with url: String?)
 }

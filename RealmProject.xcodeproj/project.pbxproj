@@ -29,9 +29,12 @@
 		4B33CAC82226F03A0058C4F7 /* FilesViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33CAC72226F03A0058C4F7 /* FilesViewOutput.swift */; };
 		4B33CACA2226F06F0058C4F7 /* FilesInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33CAC92226F06F0058C4F7 /* FilesInteractorInput.swift */; };
 		4B33CACC2226F08C0058C4F7 /* FilesInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B33CACB2226F08C0058C4F7 /* FilesInteractorOutput.swift */; };
+		4B491B0B223533C500AAEA35 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B491B0A223533C500AAEA35 /* NetworkManager.swift */; };
+		4B491B0D223533DD00AAEA35 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B491B0C223533DD00AAEA35 /* NetworkManagerProtocol.swift */; };
+		4B491B0F223544E900AAEA35 /* AlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B491B0E223544E900AAEA35 /* AlertControllerExtensions.swift */; };
 		4B64D34F2230E98300E586E7 /* MediaPickerManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D34E2230E98200E586E7 /* MediaPickerManagerProtocol.swift */; };
 		4B6B5CBB222999AB00F378EA /* FilesRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B5CBA222999AB00F378EA /* FilesRouterOutput.swift */; };
-		4B6B5CBD222A60BC00F378EA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B5CBC222A60BC00F378EA /* Extensions.swift */; };
+		4B6B5CBD222A60BC00F378EA /* RealmExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B5CBC222A60BC00F378EA /* RealmExtensions.swift */; };
 		4B871B0922325A7900EB0492 /* DetailedInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B871B0822325A7900EB0492 /* DetailedInfoPresenter.swift */; };
 		4B871B0B22325AA600EB0492 /* DetailedInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B871B0A22325AA600EB0492 /* DetailedInfoInteractor.swift */; };
 		4B871B0D22325AC400EB0492 /* DetailedInfoModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B871B0C22325AC400EB0492 /* DetailedInfoModuleConfigurator.swift */; };
@@ -74,9 +77,12 @@
 		4B33CAC72226F03A0058C4F7 /* FilesViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewOutput.swift; sourceTree = "<group>"; };
 		4B33CAC92226F06F0058C4F7 /* FilesInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesInteractorInput.swift; sourceTree = "<group>"; };
 		4B33CACB2226F08C0058C4F7 /* FilesInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesInteractorOutput.swift; sourceTree = "<group>"; };
+		4B491B0A223533C500AAEA35 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4B491B0C223533DD00AAEA35 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
+		4B491B0E223544E900AAEA35 /* AlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControllerExtensions.swift; sourceTree = "<group>"; };
 		4B64D34E2230E98200E586E7 /* MediaPickerManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPickerManagerProtocol.swift; sourceTree = "<group>"; };
 		4B6B5CBA222999AB00F378EA /* FilesRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesRouterOutput.swift; sourceTree = "<group>"; };
-		4B6B5CBC222A60BC00F378EA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4B6B5CBC222A60BC00F378EA /* RealmExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmExtensions.swift; sourceTree = "<group>"; };
 		4B871B0822325A7900EB0492 /* DetailedInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoPresenter.swift; sourceTree = "<group>"; };
 		4B871B0A22325AA600EB0492 /* DetailedInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoInteractor.swift; sourceTree = "<group>"; };
 		4B871B0C22325AC400EB0492 /* DetailedInfoModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoModuleConfigurator.swift; sourceTree = "<group>"; };
@@ -250,6 +256,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		4B491B09223533AE00AAEA35 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				4B491B0A223533C500AAEA35 /* NetworkManager.swift */,
+				4B491B0C223533DD00AAEA35 /* NetworkManagerProtocol.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
 		4B9A8076222FFE15007EA5FC /* MediaPickerManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +278,7 @@
 		4B9A807922300E2B007EA5FC /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				4B491B09223533AE00AAEA35 /* NetworkManager */,
 				4B074F2E22268F7800347819 /* DatabaseManager */,
 				4B9A8076222FFE15007EA5FC /* MediaPickerManager */,
 			);
@@ -273,7 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				4BA833302227CFC100B3E377 /* Constants.swift */,
-				4B6B5CBC222A60BC00F378EA /* Extensions.swift */,
+				4B6B5CBC222A60BC00F378EA /* RealmExtensions.swift */,
+				4B491B0E223544E900AAEA35 /* AlertControllerExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -429,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B491B0B223533C500AAEA35 /* NetworkManager.swift in Sources */,
 				4B9A8078222FFE5C007EA5FC /* MediaPickerManager.swift in Sources */,
 				4B143A3D222C065E0022FC52 /* Photo.swift in Sources */,
 				4B074F2422268BB100347819 /* FilesViewController.swift in Sources */,
@@ -451,14 +469,16 @@
 				4B074F3322268FEB00347819 /* DatabaseManagerProtocol.swift in Sources */,
 				4B143A3F222C06E00022FC52 /* Video.swift in Sources */,
 				4B9A807B22300E59007EA5FC /* MediaPickerDelegate .swift in Sources */,
+				4B491B0D223533DD00AAEA35 /* NetworkManagerProtocol.swift in Sources */,
 				4B074F3122268FB500347819 /* DatabaseManager.swift in Sources */,
 				4B64D34F2230E98300E586E7 /* MediaPickerManagerProtocol.swift in Sources */,
 				4B871B152232626E00EB0492 /* DetailedInfoInteractorOutput.swift in Sources */,
 				4B2FD29F22290EB60086790E /* Note.swift in Sources */,
 				4B074F2622268C5400347819 /* FilesTableViewCell.swift in Sources */,
 				4B074F102225AB2400347819 /* AppDelegate.swift in Sources */,
-				4B6B5CBD222A60BC00F378EA /* Extensions.swift in Sources */,
+				4B6B5CBD222A60BC00F378EA /* RealmExtensions.swift in Sources */,
 				4B33CAC62226F0120058C4F7 /* FilesViewInput.swift in Sources */,
+				4B491B0F223544E900AAEA35 /* AlertControllerExtensions.swift in Sources */,
 				4B33CAC42226EFC90058C4F7 /* FilesRouterInput.swift in Sources */,
 				4B871B112232622500EB0492 /* DetailedInfoViewOutput.swift in Sources */,
 				4B33CAC82226F03A0058C4F7 /* FilesViewOutput.swift in Sources */,

@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import AVKit
+import AVFoundation
 
 class DetailedInfoViewController:
     UIViewController,
@@ -18,6 +19,9 @@ class DetailedInfoViewController:
 
     /// Edit button
     @IBOutlet weak var editButton: UIButton!
+    
+    /// Play video button
+    @IBOutlet weak var playVideoButton: UIButton!
     
     /// Displays image
     @IBOutlet weak var mediaImageView: UIImageView!
@@ -33,6 +37,13 @@ class DetailedInfoViewController:
     
     /// Current media type
     var currentMediaType: MediaType!
+    
+    /// Cache
+    lazy var cachedDataSource: NSCache<AnyObject, UIImage> = {
+    
+        let cache = NSCache<AnyObject, UIImage>()
+        return cache
+    }()
     
     
     override func viewDidLoad() {
@@ -57,26 +68,42 @@ class DetailedInfoViewController:
             if let photo = currentObject as? Photo {
                 detailedInfoPresenter.attachNewPhoto(photoId: photo.id)
             }
-            break
             
         case .Video:
             
             if let video = currentObject as? Video {
                 detailedInfoPresenter.attachNewVideo(videoId: video.id)
             }
-            break
             
         default:
             break
         }
     }
     
+    /// Handles play video button click
+    ///
+    /// - Parameter sender: button
+    @IBAction func playVideoButtonPressed(_ sender: Any) {
+        
+        guard let video = currentObject as? Video else { return }
+
+        let videoUrlPath = URL(fileURLWithPath: videoDirectoryPath).appendingPathComponent(video.videoPath)
+        let player = AVPlayer(url: videoUrlPath)
+        let vcPlayer = AVPlayerViewController()
+        vcPlayer.player = player
+        self.present(vcPlayer, animated: true, completion: nil)
+    }
     
+    
+    /// Handles textview's editing
+    ///
+    /// - Parameter textView: text view
     func textViewDidEndEditing(_ textView: UITextView) {
         
         guard let note = currentObject as? Note else { return }
         detailedInfoPresenter.attachNewText(noteId: note.id, text: textView.text)
     }
+  
     
     // MARK: - styles setters
     
@@ -84,66 +111,82 @@ class DetailedInfoViewController:
         
         if let photo = currentObject as? Photo {
             
-            hideTextView()
             self.navigationItem.title = photo.title
             currentMediaType = .Photo
-            mediaImageView.image = UIImage(data: photo.imageData)
+            
+            if let imagePath = photo.imageUrl {
+                
+                if let image = cachedDataSource.object(forKey: imagePath as AnyObject) {
+                    mediaImageView.image = image
+                }
+                else {
+                    detailedInfoPresenter.getImage(with: imagePath)
+                }
+            }
+            else {
+                mediaImageView.image = UIImage(data: photo.imageData)
+            }
+            
         }
         else if let video = currentObject as? Video {
             
-            hideTextView()
             self.navigationItem.title = video.title
             currentMediaType = .Video
-            guard let imagePreview = videoSnapshot(filePathLocal: video.videoPath) else { return }
-            mediaImageView.image = imagePreview
         }
         else if let note = currentObject as? Note {
             
-            hideMediaImageView()
             self.navigationItem.title = note.title
             currentMediaType = .Note
             textView.text = note.text
         }
+        
+        prepareView()
     }
     
-    
-    /// Prepares view for text content
-    func hideMediaImageView() {
+    func prepareView() {
         
-        mediaImageView.isHidden = true
-        textView.isHidden = false
-        editButton.isHidden = true
-    }
-    
-    
-    /// Prepares view for media content
-    func hideTextView() {
+        guard let mediaType = currentMediaType else { return }
         
-        mediaImageView.isHidden = false
-        textView.isHidden = true
-        editButton.isHidden = false
-    }
-    
-    
-    /// Returns video snapshot
-    ///
-    /// - Parameter filePathLocal: path to video
-    /// - Returns: UIImage snapshot
-    func videoSnapshot(filePathLocal: String) -> UIImage? {
-    
-        let vidURL = URL(fileURLWithPath:filePathLocal as String)
-        let asset = AVURLAsset(url: vidURL)
-        let generator = AVAssetImageGenerator(asset: asset)
-        generator.appliesPreferredTrackTransform = true
-        
-        do {
-            let imageRef = try generator.copyCGImage(at: CMTimeMake(value: 0, timescale: 1), actualTime: nil)
-            return UIImage(cgImage: imageRef)
+        switch mediaType {
+            
+        case .Note:
+            mediaImageView.isHidden = true
+            textView.isHidden = false
+            playVideoButton.isHidden = true
+            editButton.isHidden = true
+            break
+            
+        case .Photo:
+            mediaImageView.isHidden = false
+            textView.isHidden = true
+            playVideoButton.isHidden = true
+            editButton.isHidden = false
+            break
+            
+        case .Video:
+            mediaImageView.isHidden = true
+            textView.isHidden = true
+            playVideoButton.isHidden = false
+            editButton.isHidden = false
+            break
         }
-        catch let error as NSError
-        {
-            print("\nImage generation failed with error \(error)")
-            return nil
-        }
+ 
     }
+    
+    
+    // MARK: - View Input
+    
+    func setImage(imageData: Data?, imageUrl: String?) {
+        
+        guard let currentImageData = imageData, let photoUrl = imageUrl else { return }
+        
+        let image = UIImage(data: currentImageData)
+        cachedDataSource.setObject(image!, forKey: photoUrl as AnyObject)
+        
+        DispatchQueue.main.async {[weak self] in
+            self?.mediaImageView.image = image
+        }
+        
+    }
+
 }

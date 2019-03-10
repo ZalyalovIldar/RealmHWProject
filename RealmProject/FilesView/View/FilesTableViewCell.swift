@@ -37,7 +37,7 @@ class FilesTableViewCell: UITableViewCell {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
+        dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale(identifier: "en_US")
         
         if let folder = object as? Folder {

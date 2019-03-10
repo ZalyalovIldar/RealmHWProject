@@ -16,13 +16,24 @@ protocol FilesViewOutput: AnyObject {
     /// - Parameter type: type description
     func handleAddMediaButtonPressed(type: MediaType)
     
+    /// Handles adding image using web url
+    ///
+    /// - Parameter folderId: current folder id
+    func handleAddImageUsingURL(folderId: String?)
+    
     /// Reacts on add folder click
+    ///
+    /// - Parameter folderId:  current folder id
     func addFolder(folderId: String?)
     
     /// Reacts on add note click
+    ///
+    /// - Parameter folderId:  current folder id
     func addNote(folderId: String?)
     
     /// Gets data folders
+    ///
+    /// - Parameter id: folder id
     func getFolder(with id: String?)
     
     /// Gets data folders
@@ -30,7 +41,7 @@ protocol FilesViewOutput: AnyObject {
     
     /// Deletes given object
     ///
-    /// - Parameter object: <#object description#>
+    /// - Parameter object: given object
     func deleteObject(object: Object)
 
 }

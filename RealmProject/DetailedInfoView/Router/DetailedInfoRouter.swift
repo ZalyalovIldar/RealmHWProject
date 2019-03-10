@@ -40,7 +40,7 @@ class DetailedInfoRouter: DetailedInfoRouterInput, MediaPickerDelegate {
         detailedInfoPresenter.changePhoto(currentObjectId: self.currentObjectId, imageData: imageData)
     }
     
-    func handleSelectedVideo(videoPath: String?) {
-        detailedInfoPresenter.changeVideo(currentObjectId: self.currentObjectId, videoPath: videoPath)
+    func handleSelectedVideo(videoUrlPath: URL?) {
+        detailedInfoPresenter.changeVideo(currentObjectId: self.currentObjectId, videoUrlPath: videoUrlPath)
     }
 }

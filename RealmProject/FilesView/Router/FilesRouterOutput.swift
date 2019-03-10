@@ -14,5 +14,5 @@ protocol FilesRouterOutput: AnyObject {
     func addPhoto(currentFolderId: String?, title: String?, imageData: Data?)
     
     /// Reacts on add video click
-    func addVideo(currentFolderId: String?, title: String?, videoPath: String?)
+    func addVideo(currentFolderId: String?, title: String?, videoUrlPath: URL?)
 }

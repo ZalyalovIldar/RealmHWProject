@@ -28,6 +28,7 @@ class DetailedInfoModuleConfigurator: NSObject {
         let router = DetailedInfoRouter()
         
         let databaseManager = DatabaseManager()
+        let networkManager = NetworkManager()
         let pickerManager = MediaPickerManager()
         
         pickerManager.delegate = router
@@ -41,6 +42,7 @@ class DetailedInfoModuleConfigurator: NSObject {
         
         interactor.detailedInfoPresenter = presenter
         interactor.databaseManager = databaseManager
+        interactor.networkManager = networkManager
         
         router.view = view
         router.mediaPickerManager = pickerManager

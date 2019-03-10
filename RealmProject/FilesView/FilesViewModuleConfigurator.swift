@@ -17,6 +17,7 @@ final class FilesViewModuleConfigurator: NSObject {
     override func awakeFromNib() {
      
         configureModule()
+        createVideosDirectory()
     }
     
     private func configureModule() {
@@ -29,6 +30,7 @@ final class FilesViewModuleConfigurator: NSObject {
         let router = FilesRouter()
         
         let databaseManager = DatabaseManager()
+        let networkManager = NetworkManager()
         let pickerManager = MediaPickerManager()
         
         pickerManager.delegate = router
@@ -41,10 +43,28 @@ final class FilesViewModuleConfigurator: NSObject {
         presenter.filesInteractor = interactor
         
         interactor.filesPresenter = presenter
+        interactor.networkManager = networkManager
         interactor.databaseManager = databaseManager
         
         router.view = view
         router.mediaPickerManager = pickerManager
         router.filesPresenter = presenter
+    }
+    
+    private func createVideosDirectory() {
+    
+        let fileManager = FileManager.default
+        
+        if !fileManager.fileExists(atPath: videoDirectoryPath) {
+            
+            do {
+                try fileManager.createDirectory(atPath: videoDirectoryPath, withIntermediateDirectories: true, attributes: nil)
+            }
+            catch (let error){
+                print("Error during directory creating: \(error)")
+            }
+        }
+        
+    
     }
 }

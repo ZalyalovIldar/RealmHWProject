@@ -48,7 +48,7 @@ class MediaPickerManager:
             
         case.Video:
             if let videoUrl = info[.mediaURL] as? URL {
-                delegate?.handleSelectedVideo(videoPath: String(describing: videoUrl))
+                delegate?.handleSelectedVideo(videoUrlPath: videoUrl)
             }
             break
             

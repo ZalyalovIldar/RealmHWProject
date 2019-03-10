@@ -18,5 +18,5 @@ protocol MediaPickerDelegate {
     /// Handles selected image
     ///
     /// - Parameter imageData: image's data
-    func handleSelectedVideo(videoPath: String?)
+    func handleSelectedVideo(videoUrlPath: URL?)
 }

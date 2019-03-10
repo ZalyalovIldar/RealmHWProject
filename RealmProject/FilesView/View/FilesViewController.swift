@@ -77,6 +77,9 @@ class FilesViewController:
         filesPresenter.handleAddMediaButtonPressed(type: .Video)
     }
     
+    @IBAction func uploadImageFromInternetButtonPressed(_ sender: Any) {
+        filesPresenter.handleAddImageUsingURL(folderId: currentFolderId)
+    }
     
     // MARK: - Table data configurator
     

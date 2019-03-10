@@ -10,4 +10,8 @@ import Foundation
 
 protocol DetailedInfoViewInput: AnyObject {
     
+    /// Sets image data
+    ///
+    /// - Parameter imageData: image data
+    func setImage(imageData: Data?, imageUrl: String?)
 }

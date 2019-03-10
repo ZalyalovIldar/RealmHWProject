@@ -15,6 +15,7 @@ import RealmSwift
     dynamic var title = String()
     dynamic var dateOfCreation = Date()
     dynamic var imageData = Data()
+    dynamic var imageUrl: String?
     
     override static func primaryKey() -> String? {
         return "id"
