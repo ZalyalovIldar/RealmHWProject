@@ -18,6 +18,6 @@ class TextFileModel: Object {
     dynamic var content = String()
     
     override static func primaryKey() -> String? {
-        return "id"
+        return #keyPath(id)
     }
 }

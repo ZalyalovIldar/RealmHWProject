@@ -24,15 +24,9 @@ class DetailModuleConfigurations: NSObject {
         let dataBase = DataBaseManager()
         let presenter = DetailPresenter()
         let interactor = DetailInteractor()
-//        let router = DetailRouter()
         
         view.presenter = presenter
         interactor.dataManager = dataBase
-//        interactor.presenter = presenter
         presenter.interactor = interactor
-//        presenter.router = router
-//        presenter.view = view
-//        router.view = view
-//        router.presenter = presenter
     }
 }

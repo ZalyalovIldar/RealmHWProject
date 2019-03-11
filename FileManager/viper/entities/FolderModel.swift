@@ -21,6 +21,6 @@ class FolderModel: Object {
     var media: List<MediaModel>? = List<MediaModel>()
     
     override static func primaryKey() -> String? {
-        return "id"
+        return #keyPath(id)
     }
 }

@@ -10,5 +10,8 @@ import Foundation
 
 protocol DetailViewControllerInput: AnyObject {
     
+    /// Инициализировать содержимое текст файла
+    ///
+    /// - Parameter text: контент
     func initTextLabel(text: String?)
 }

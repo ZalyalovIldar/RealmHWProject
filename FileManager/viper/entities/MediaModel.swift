@@ -18,6 +18,6 @@ class MediaModel: Object {
     dynamic var path = String()
     
     override static func primaryKey() -> String? {
-        return "id"
+        return #keyPath(id)
     }
 }

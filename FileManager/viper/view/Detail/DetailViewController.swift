@@ -19,8 +19,6 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +27,7 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
         initItems()
     }
     
+    /// В зависимости от того, в каком мы объекте, вызываем нужный инициализатор
     func initItems() {
         
         if let text = currentObject as? TextFileModel {
@@ -37,7 +36,7 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
         }
         if let media = currentObject as? MediaModel {
             
-            initTextLabel(text: "")
+            initTextLabel(text: AllConstants.empty.rawValue)
             initMedia(media: media)
         }
     }
@@ -46,21 +45,28 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
         textLabel?.text = text
     }
     
+    /// Инициализировать медиа файл
+    ///
+    /// - Parameter media: медиа файл объект
     func initMedia(media: Object) {
         
         self.mediaImageView?.sd_setImage(with: URL(string: (media as! MediaModel).path), completed: nil)
     }
     
+    /// Изменение контента объекта
+    ///
+    /// - Parameter sender: UIBarButtonItem
     @IBAction func editContent(_ sender: UIBarButtonItem) {
         
         if let _ = currentObject as? TextFileModel {
             
-            let alert = UIAlertController(title: "Etiting", message: "Enter the content of TextFile", preferredStyle: .alert)
+            let alert = UIAlertController(title: AllConstants.editing.rawValue, message: AllConstants.enterContent.rawValue, preferredStyle: .alert)
             alert.addTextField { (textField : UITextField!) -> Void in
-                textField.placeholder = "content"
+                textField.placeholder =  AllConstants.content.rawValue
             }
+            
             let textField = alert.textFields?[0]
-            let ok = UIAlertAction(title: "Ok", style: .default) { (action) in
+            let ok = UIAlertAction(title: AllConstants.ok.rawValue, style: .default) { (action) in
                 if textField?.text?.isEmpty == false {
                     self.textLabel?.text = textField?.text
                     self.presenter.performTransaction {
@@ -74,17 +80,19 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
             
             self.present(alert, animated: true, completion: nil)
         }
+        
         if let _ = currentObject as? MediaModel {
             
-            let alert = UIAlertController(title: "Источник фотографий", message: nil, preferredStyle: .actionSheet)
-            let download = UIAlertAction(title: "Скачать", style: .default) { (action) in
+            let alert = UIAlertController(title: AllConstants.source.rawValue, message: nil, preferredStyle: .actionSheet)
+            let download = UIAlertAction(title: AllConstants.download.rawValue, style: .default) { (action) in
                 
-                let alert = UIAlertController(title: "Download", message: "Enter url of image", preferredStyle: .alert)
+                let alert = UIAlertController(title: AllConstants.download.rawValue, message: AllConstants.url.rawValue, preferredStyle: .alert)
                 alert.addTextField { (textField : UITextField!) -> Void in
-                    textField.placeholder = "url"
+                    textField.placeholder = AllConstants.urlPlaceholder.rawValue
                 }
+                
                 let textField = alert.textFields?[0]
-                let ok = UIAlertAction(title: "Ok", style: .default) { (action) in
+                let ok = UIAlertAction(title: AllConstants.ok.rawValue, style: .default) { (action) in
                     if textField?.text?.isEmpty == false {
                         self.mediaImageView?.sd_setImage(with: URL(string: (textField?.text)!), completed: nil)
                         self.presenter.saveImage((textField?.text)!, item: self.currentObject)
@@ -96,10 +104,12 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
                 self.present(alert, animated: true, completion: nil)
                 
             }
-            let photoLibAction = UIAlertAction(title: "Фото", style: .default) { (action) in
+            
+            let photoLibAction = UIAlertAction(title: AllConstants.photo.rawValue, style: .default) { (action) in
                 self.chooseImagePickerAction(source: .photoLibrary)
             }
-            let cancel = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+            
+            let cancel = UIAlertAction(title: AllConstants.cancel.rawValue, style: .cancel, handler: nil)
             alert.addAction(download)
             alert.addAction(photoLibAction)
             alert.addAction(cancel)
@@ -107,8 +117,12 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
         }
     }
     
+    //Методы для получения картинки из галереи
+    
     func chooseImagePickerAction(source: UIImagePickerController.SourceType) {
+        
         if UIImagePickerController.isSourceTypeAvailable(source) {
+        
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.allowsEditing = true
@@ -118,20 +132,10 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         self.mediaImageView?.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         mediaImageView?.contentMode = .scaleAspectFill
         mediaImageView?.clipsToBounds = true
         dismiss(animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

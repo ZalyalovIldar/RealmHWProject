@@ -14,22 +14,19 @@ class FileDirectoryPresenter: FileDirectoryOutput, FileDirectoryRouterOutput, Fi
     var router: FileDirectoryRouterInput!
     var interactor: FileDirectoryInteractorInput!
     var view: FileDirectoryInput!
-    
-    //1
+
     func showAlert(item: FolderModel) {
         router.showAlert(item: item)
     }
     
-    //2
     func addNewItem(item: FolderModel, name: String?, type: String?) {
         interactor.addNewItemToDirectory(item: item, name: name, type: type)
     }
     
-    //1
     func getMainFolder() {
         interactor.getMainFolder()
     }
-    //4
+    
     func didFinishObtainingFolder(_ folder: FolderModel) {
         view.initMainFolder(mainFolder: folder)
     }
@@ -46,7 +43,6 @@ class FileDirectoryPresenter: FileDirectoryOutput, FileDirectoryRouterOutput, Fi
         router.showFolder(item: item)
     }
     
-    //3
     func initItem(item: FolderModel) {
         view.initItem(item: item)
     }
@@ -63,12 +59,10 @@ class FileDirectoryPresenter: FileDirectoryOutput, FileDirectoryRouterOutput, Fi
         router.showEditNameAlert(item, folder)
     }
     
-    //4
     func obtainWeight(item: Object) {
         interactor.obtainWeight(item: item)
     }
     
-    //6
     func initCellWeight(text: String) {
         view.initCellWeight(text: text)
     }

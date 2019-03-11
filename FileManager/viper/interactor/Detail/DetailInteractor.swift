@@ -15,7 +15,12 @@ class DetailInteractor: DetailInteractorInput {
     var dataManager: DataBaseManagerProtocol!
     
     func saveImage(_ path: String, item: Object) {
-        dataManager.saveImage(path, item: item)
+        
+        dataManager.performTransaction {
+            (item as! MediaModel).path = path
+        }
+        
+        dataManager.updateItem(item: item)
     }
     
     func updateItem(item: Object) {

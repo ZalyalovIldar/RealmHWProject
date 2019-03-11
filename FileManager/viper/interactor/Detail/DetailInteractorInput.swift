@@ -12,9 +12,22 @@ import UIKit
 
 protocol DetailInteractorInput: AnyObject {
     
+    /// Сохранить изображение в бд
+    ///
+    /// - Parameters:
+    ///   - path: путь изображения
+    ///   - item: медиа.файл с изображением
+    /// - Returns: -
     func saveImage(_ path: String, item: Object)
     
-    func updateItem(item: Object) 
+    /// Обновить объект
+    ///
+    /// - Parameter item: объект, который нужно обновить
+    /// - Returns: -
+    func updateItem(item: Object)
     
+    /// Выполнить транзакцию внутри блока write
+    ///
+    /// - Parameter transaction: транзакция
     func performTransaction(transaction: () -> ())
 }

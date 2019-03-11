@@ -11,33 +11,46 @@ import RealmSwift
 
 protocol DataBaseManagerProtocol: AnyObject {
 
+    /// Удаляет все данные из Realm
+    ///
+    /// - Returns: -
     func clearAll()
     
-    func obtainLastId() -> Int
-    
+    /// Сохраняет объект в Realm
+    ///
+    /// - Parameter item: Объект который нужно сохранить
+    /// - Returns: -
     func saveItem(item: Object)
     
+    /// Удаляет определенный объект
+    ///
+    /// - Parameter item: Объект, который нужно удалить
+    /// - Returns: -
     func removeItem(item: Object)
     
+    /// Обновляет данные объекта, либо добавляет объект в бд если он не создан
+    ///
+    /// - Parameter item: Объект, который нужно обновить
+    /// - Returns: -
     func updateItem(item: Object)
     
+    /// Получение всех Папок
+    ///
+    /// - Returns: Массив папок
     func obtainFolders() -> [FolderModel]
     
-    func obtainWeight(item: Object) -> Double
-    
+    /// Получить все текстовые файлы
+    ///
+    /// - Returns: Массив текстовых файлов
     func obtainTextFiles() -> [TextFileModel]
     
+    /// Получить все медиа файлы
+    ///
+    /// - Returns: Массив медиа файлов
     func obtainMediaFiles() -> [MediaModel]
     
-    func obtainById(id: Int) -> [Object]?
-    
-    func getFolderById(id: Int) -> FolderModel?
-    
-    func saveImage(_ path: String, item: Object)
-    
+    /// Выполнить транзакцию внутри блока write
+    ///
+    /// - Parameter transaction: транзакция
     func performTransaction(transaction: () -> ())
-    
-    func deleteItem(_ item: Object, _ folder: FolderModel)
-    
-    func editNameOfObject(_ item: Object, _ folder: FolderModel, _ textField: String?)
 }

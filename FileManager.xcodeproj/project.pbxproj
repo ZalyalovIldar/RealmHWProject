@@ -11,7 +11,6 @@
 		522970462235473B007C6731 /* DetailModuleConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522970452235473B007C6731 /* DetailModuleConfigurations.swift */; };
 		5229704B2235484E007C6731 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5229704A2235484E007C6731 /* DetailInteractor.swift */; };
 		5229704D22354869007C6731 /* DetailInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5229704C22354869007C6731 /* DetailInteractorInput.swift */; };
-		5229704F22354878007C6731 /* DetailInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5229704E22354878007C6731 /* DetailInteractorOutput.swift */; };
 		5252839622326FEE0024E7B5 /* DataBaseManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252839522326FEE0024E7B5 /* DataBaseManagerProtocol.swift */; };
 		5252839822326FFA0024E7B5 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5252839722326FFA0024E7B5 /* DataBaseManager.swift */; };
 		525A1DDD222B15BA000739A5 /* FolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A1DDC222B15BA000739A5 /* FolderModel.swift */; };
@@ -45,7 +44,6 @@
 		522970452235473B007C6731 /* DetailModuleConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleConfigurations.swift; sourceTree = "<group>"; };
 		5229704A2235484E007C6731 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		5229704C22354869007C6731 /* DetailInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractorInput.swift; sourceTree = "<group>"; };
-		5229704E22354878007C6731 /* DetailInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractorOutput.swift; sourceTree = "<group>"; };
 		5252839522326FEE0024E7B5 /* DataBaseManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManagerProtocol.swift; sourceTree = "<group>"; };
 		5252839722326FFA0024E7B5 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		525A1DDC222B15BA000739A5 /* FolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderModel.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 			children = (
 				5229704A2235484E007C6731 /* DetailInteractor.swift */,
 				5229704C22354869007C6731 /* DetailInteractorInput.swift */,
-				5229704E22354878007C6731 /* DetailInteractorOutput.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -390,7 +387,6 @@
 			files = (
 				52FA2C2F2232C389009AA0F1 /* ModuleConfigurator.swift in Sources */,
 				525A1DDD222B15BA000739A5 /* FolderModel.swift in Sources */,
-				5229704F22354878007C6731 /* DetailInteractorOutput.swift in Sources */,
 				52F294CD222AD5B90083C45D /* DetailViewControllerInput.swift in Sources */,
 				52F294BB222AD4E20083C45D /* FileDirectoryPresenter.swift in Sources */,
 				52F294CB222AD5A30083C45D /* FileDirectoryOutput.swift in Sources */,
