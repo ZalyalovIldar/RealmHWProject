@@ -16,10 +16,10 @@ class Folder: Object {
     dynamic var title = String()
     dynamic var isRootFolder = false
     dynamic var dateOfCreation = Date()
-    dynamic var folders = List<Folder>()
-    dynamic var notes = List<Note>()
-    dynamic var photos = List<Photo>()
-    dynamic var videos = List<Video>()
+    var folders = List<Folder>()
+    var notes = List<Note>()
+    var photos = List<Photo>()
+    var videos = List<Video>()
     
     override static func primaryKey() -> String? {
         return "id"

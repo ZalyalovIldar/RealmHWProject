@@ -19,10 +19,10 @@ class MediaPickerManager:
     
     var mediaType: MediaType?
     
-    var imagePicker: UIImagePickerController!
+    weak var imagePicker: UIImagePickerController!
     
     
-    func showImagePicker(view: UIViewController, type: MediaType) {
+    func showImagePicker(in view: UIViewController, type: MediaType) {
         
         self.mediaType = type
         

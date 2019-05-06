@@ -22,6 +22,10 @@ class FilesTableViewCell: UITableViewCell {
     
     /// Size of file
     @IBOutlet weak var sizeLabel: UILabel!
+    
+    lazy var dateFormatter: DateFormatter = {
+        return DateFormatter()
+    }()
        
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +39,6 @@ class FilesTableViewCell: UITableViewCell {
     
     func configureCell(object: Object) {
         
-        let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale(identifier: "en_US")

@@ -66,17 +66,6 @@ class DetailedInfoInteractor: DetailedInfoInteractorInput {
         
         guard let urlString = url, let currentUrl = URL(string: urlString) else { return }
         
-        networkManager.obtainImage(with: currentUrl) { (result) in
-            
-            switch result {
-                
-            case .Success(let data):
-                self.detailedInfoPresenter.setImage(imageData: data, imageUrl: url)
-                
-            case .Error(let error):
-                print(error.localizedCapitalized)
-                
-            }
-        }
+        
     }
 }

@@ -131,7 +131,7 @@ final class FilesRouter: FilesRouterInput, MediaPickerDelegate {
     
     
     func showImagePicker(title: String?, type: MediaType) {
-        mediaPickerManager?.showImagePicker(view: view, type: type)
+        mediaPickerManager?.showImagePicker(in: view, type: type)
     }
     
     

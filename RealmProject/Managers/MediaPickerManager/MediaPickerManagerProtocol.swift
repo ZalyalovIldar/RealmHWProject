@@ -13,6 +13,6 @@ protocol MediaPickerManagerProtocol {
     
     var delegate: MediaPickerDelegate? { get set }
     
-    func showImagePicker(view: UIViewController, type: MediaType)
+    func showImagePicker(in view: UIViewController, type: MediaType)
     
 }

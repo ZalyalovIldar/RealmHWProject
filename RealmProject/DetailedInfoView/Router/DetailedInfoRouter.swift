@@ -30,7 +30,7 @@ class DetailedInfoRouter: DetailedInfoRouterInput, MediaPickerDelegate {
         guard currentObjectId != nil else { return }
         
         self.currentObjectId = currentObjectId
-        mediaPickerManager?.showImagePicker(view: view, type: .Photo)
+        mediaPickerManager?.showImagePicker(in: view, type: .Photo)
     }
     
     
