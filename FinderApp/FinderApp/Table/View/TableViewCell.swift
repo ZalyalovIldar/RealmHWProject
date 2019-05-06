@@ -14,11 +14,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var sizeOfContent: UILabel!
     @IBOutlet weak var dateOfCreate: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-
+  
     /// скофигурировать ячейку
     ///
     /// - Parameters:

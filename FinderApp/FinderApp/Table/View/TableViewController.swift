@@ -32,23 +32,18 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate, TableViewInputPr
     var presenter: TableViewOutputProtocol!
    
     let currentFolder = Folder()
-    
+    let cellIdentifier = "cell"
+    let selfIdentifier = "self"
+    let detailIdentifier = "detail"
+    let folderType = "folder"
     
     
     override func viewDidLoad() {
        super.viewDidLoad()
        
-        let all = dbManager.obtainModels()
-        
-        for one in all {
-            print(one.id)
-        }
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100
-         
-        
      }
     
     
@@ -60,7 +55,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate, TableViewInputPr
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let models: [TypeOfObject]  = dbManager.obtaimModelsWithId(id: currentFolder.id)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TableViewCell
         let customCell = models[indexPath.row]
         
         cell.cellImage.image = dataManager.unarchive(object: customCell.picture, with: UIImage())
@@ -72,11 +67,11 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate, TableViewInputPr
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        
-        if segue.identifier == "detail", let model = sender as? TypeOfObject {
+        if segue.identifier == detailIdentifier, let model = sender as? TypeOfObject {
             let destinationController = segue.destination as! DetailViewController
             destinationController.model = model
         }
-        if segue.identifier == "self", let model = sender as? TypeOfObject {
+        if segue.identifier == selfIdentifier, let model = sender as? TypeOfObject {
             let destinationController = segue.destination as! TableViewController
             
             destinationController.currentFolder.id = model.id
@@ -102,10 +97,10 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate, TableViewInputPr
         let models: [TypeOfObject]  = dbManager.obtaimModelsWithId(id: currentFolder.id)
         let cell = models[indexPath.row]
         
-        if cell.type == "folder" {
-            performSegue(withIdentifier: "self", sender: cell)
+        if cell.type == folderType {
+            performSegue(withIdentifier: selfIdentifier, sender: cell)
         } else {
-         performSegue(withIdentifier: "detail", sender: cell)
+         performSegue(withIdentifier: detailIdentifier, sender: cell)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

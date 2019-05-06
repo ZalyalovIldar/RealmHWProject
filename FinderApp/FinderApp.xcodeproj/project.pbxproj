@@ -19,7 +19,6 @@
 		1BB9BCF9222AEAF500E7E4A9 /* OperationsWithData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9BCF8222AEAF500E7E4A9 /* OperationsWithData.swift */; };
 		1BB9BCFB222AFCDC00E7E4A9 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9BCFA222AFCDC00E7E4A9 /* AlertManager.swift */; };
 		1BB9BCFD222B0A8F00E7E4A9 /* TableModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9BCFC222B0A8F00E7E4A9 /* TableModuleConfigurator.swift */; };
-		1BB9BCFF222B0E8200E7E4A9 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9BCFE222B0E8200E7E4A9 /* File.swift */; };
 		1BB9BD01222B305A00E7E4A9 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9BD00222B305A00E7E4A9 /* ImagePickerManager.swift */; };
 		1BB9BD03222C1E1300E7E4A9 /* AVPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9BD02222C1E1300E7E4A9 /* AVPlayerManager.swift */; };
 		1BB9BD05222D140600E7E4A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9BD04222D140600E7E4A9 /* Extensions.swift */; };
@@ -49,7 +48,6 @@
 		1BB9BCF8222AEAF500E7E4A9 /* OperationsWithData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsWithData.swift; sourceTree = "<group>"; };
 		1BB9BCFA222AFCDC00E7E4A9 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		1BB9BCFC222B0A8F00E7E4A9 /* TableModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableModuleConfigurator.swift; sourceTree = "<group>"; };
-		1BB9BCFE222B0E8200E7E4A9 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1BB9BD00222B305A00E7E4A9 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		1BB9BD02222C1E1300E7E4A9 /* AVPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerManager.swift; sourceTree = "<group>"; };
 		1BB9BD04222D140600E7E4A9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 				1BC1BC92223527300083F5B8 /* Managers */,
 				1BEB471D2225A96400DED88F /* Prsenter */,
 				1BEB47182225A92E00DED88F /* View */,
-				1BB9BCFE222B0E8200E7E4A9 /* File.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -343,7 +340,6 @@
 				1BB9BCF722296B0C00E7E4A9 /* DataBaseManager.swift in Sources */,
 				1BEB47282225B9C500DED88F /* DetailConfigurator.swift in Sources */,
 				1BB9BD03222C1E1300E7E4A9 /* AVPlayerManager.swift in Sources */,
-				1BB9BCFF222B0E8200E7E4A9 /* File.swift in Sources */,
 				1BEB47232225B94300DED88F /* TableViewCell.swift in Sources */,
 				1BEB471F2225A97900DED88F /* TablePresenter.swift in Sources */,
 				1BEB472E2225B9F000DED88F /* DetailViewInput.swift in Sources */,

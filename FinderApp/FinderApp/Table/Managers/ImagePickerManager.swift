@@ -27,7 +27,7 @@ class ImagePickerMangaer: UIViewController, UIImagePickerControllerDelegate, UIN
     var alertManager: AlertManagerProtoclol!
     var dataManager: OperationsWithData!
   
-    ///   показать имадж пикео
+    ///   показать image picker
     ///
     /// - Parameter source: источник дданных (фотки или видосы)
     func presentImagePicker(_ source: ImageSource) {

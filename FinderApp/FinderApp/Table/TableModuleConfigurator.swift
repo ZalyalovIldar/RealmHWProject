@@ -29,13 +29,9 @@ class TableModuleConfigurator: NSObject {
         let alertManager = AlertManager()
         let imagePicker = ImagePickerMangaer()
         
-        
-        
         view.dataManager = dataManager
         view.dbManager = dbManager
         view.presenter = presenter
-       
-        
        
         presenter.dataManager = dataManager
         presenter.dbManager = dbManager
@@ -50,6 +46,5 @@ class TableModuleConfigurator: NSObject {
         imagePicker.tableView = view
         imagePicker.alertManager = alertManager
         imagePicker.dataManager = dataManager
-       
     }
 }
