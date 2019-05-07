@@ -9,9 +9,14 @@
 import Foundation
 import RealmSwift
 
-enum Type: String {
+enum Type {
     
-    case _empty = "", folder = "folder", text = "text", image = "image", video = "video", media = "media"
+    static let _empty = ""
+    static let folder = "folder"
+    static let text = "text"
+    static let image = "image"
+    static let video = "video"
+    static let media = "media"
 }
 
 class FileDirectoryInteractor: FileDirectoryInteractorInput {
@@ -26,7 +31,7 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
             
             switch type {
                 
-            case (Type.folder).rawValue:
+            case Type.folder:
                 
                 let folderModel = FolderModel()
                 folderModel.name = name!
@@ -34,7 +39,7 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
     
                 if(item == nil) {
                 
-                    folderModel.name = AllConstants.fileDirectory.rawValue
+                    folderModel.name = AllConstants.fileDirectory
                     folderModel.id = 1
                     dataManager.saveItem(item: folderModel)
                 } else {
@@ -51,7 +56,7 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
                     dataManager.updateItem(item: folderModel)
                     presenter.initItem(item: currentFolder)
                 }
-            case (Type.text).rawValue:
+            case Type.text:
                 
                 var currentFolder = FolderModel()
                 currentFolder = self.getFolderById(id: (item?.id)!)!
@@ -66,7 +71,7 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
                 
                 dataManager.saveItem(item: currentFolder)
                 presenter.initItem(item: currentFolder)
-            case (Type.image).rawValue:
+            case Type.image:
                 
                 var currentFolder = FolderModel()
                 currentFolder = self.getFolderById(id: (item?.id)!)!
@@ -81,7 +86,7 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
                 
                 dataManager.saveItem(item: currentFolder)
                 presenter.initItem(item: currentFolder)
-            case (Type.video).rawValue:
+            case Type.video:
                 
                 var currentFolder = FolderModel()
                 currentFolder = self.getFolderById(id: (item?.id)!)!
@@ -143,10 +148,10 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
         if let folder1 = item as? FolderModel {
             
             dataManager.performTransaction {
-                if textField == AllConstants.empty.rawValue {
-                    folder1.name = AllConstants.defaultName.rawValue
+                if textField == AllConstants.empty {
+                    folder1.name = AllConstants.defaultName
                 } else {
-                    folder1.name = textField ?? AllConstants.defaultName.rawValue
+                    folder1.name = textField ?? AllConstants.defaultName
                 }
             }
             
@@ -156,10 +161,10 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
         if let text = item as? TextFileModel {
         
             dataManager.performTransaction {
-                if textField == AllConstants.empty.rawValue {
-                    text.name = AllConstants.defaultName.rawValue
+                if textField == AllConstants.empty {
+                    text.name = AllConstants.defaultName
                 } else {
-                    text.name = textField ?? AllConstants.defaultName.rawValue
+                    text.name = textField ?? AllConstants.defaultName
                 }
             }
             
@@ -168,10 +173,10 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
         if let media = item as? MediaModel {
             
             dataManager.performTransaction {
-                if textField == AllConstants.empty.rawValue {
-                    media.name = AllConstants.defaultName.rawValue
+                if textField == AllConstants.empty {
+                    media.name = AllConstants.defaultName
                 } else {
-                    media.name = textField ?? AllConstants.defaultName.rawValue
+                    media.name = textField ?? AllConstants.defaultName
                 }
             }
             
@@ -187,7 +192,7 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
         
         if mainFolder == nil {
         
-            addNewItemToDirectory(item: nil, name: AllConstants.fileDirectory.rawValue, type: (Type.folder).rawValue)
+            addNewItemToDirectory(item: nil, name: AllConstants.fileDirectory, type: Type.folder)
             mainFolder = self.getFolderById(id: 1)
         }
         
@@ -199,7 +204,7 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
         let weight = self.obtainWeightOfItem(item: item)
     
         if weight != 0.0 {
-            presenter.initCellWeight(text: String(format: AllConstants.format.rawValue, weight))
+            presenter.initCellWeight(text: String(format: AllConstants.format, weight))
         } else {
             presenter.initCellWeight(text: String(0))
         }
@@ -226,16 +231,16 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
         
         if let folder = item as? FolderModel {
         
-            for i in folder.folders! {
-                obtain(item: i)
+            for folderItem in folder.folders! {
+                obtain(item: folderItem)
             }
             
-            for i in folder.textFiles! {
-                obtain(item: i)
+            for textItem in folder.textFiles! {
+                obtain(item: textItem)
             }
             
-            for i in folder.media! {
-                obtain(item: i)
+            for mediaItem in folder.media! {
+                obtain(item: mediaItem)
             }
         }
         
@@ -255,21 +260,21 @@ class FileDirectoryInteractor: FileDirectoryInteractorInput {
     /// - Returns: максимальный id 
     func obtainLastId() -> Int {
         
-        let f = Array(dataManager.obtainFolders())
-        let t = Array(dataManager.obtainTextFiles())
-        let m = Array(dataManager.obtainMediaFiles())
+        let folder = Array(dataManager.obtainFolders())
+        let textFile = Array(dataManager.obtainTextFiles())
+        let mediaFile = Array(dataManager.obtainMediaFiles())
         var id: [Int] = []
         
-        for i in f {
-            id.append(i.id)
+        for item in folder {
+            id.append(item.id)
         }
     
-        for i in t {
-            id.append(i.id)
+        for item in textFile {
+            id.append(item.id)
         }
         
-        for i in m {
-            id.append(i.id)
+        for item in mediaFile {
+            id.append(item.id)
         }
         
         return id.max() ?? 0

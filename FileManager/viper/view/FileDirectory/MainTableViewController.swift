@@ -77,33 +77,33 @@ class MainTableViewController: UITableViewController, FileDirectoryInput {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: AllConstants.cell.rawValue, for: indexPath) as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AllConstants.cell, for: indexPath) as! CustomTableViewCell
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = AllConstants.dateFormetter.rawValue
+        dateFormatter.dateFormat = AllConstants.dateFormetter
         
         if let folder = items[indexPath.row] as? FolderModel {
             
             cell.nameLabel?.text = folder.name
             cell.timeLabel?.text = dateFormatter.string(from: folder.time)
-            cell.typeLabel.text = (Type.folder).rawValue
+            cell.typeLabel.text = Type.folder
         }
         
         if let text = items[indexPath.row] as? TextFileModel {
             
             cell.nameLabel?.text = text.name
             cell.timeLabel?.text = dateFormatter.string(from: text.time)
-            cell.typeLabel.text = (Type.text).rawValue
+            cell.typeLabel.text = Type.text
         }
         
         if let media = items[indexPath.row] as? MediaModel {
             
             cell.nameLabel?.text = media.name
             cell.timeLabel?.text = dateFormatter.string(from: media.time)
-            cell.typeLabel.text = (Type.media).rawValue
+            cell.typeLabel.text = Type.media
         }
         
         presenter.obtainWeight(item: items[indexPath.row])
-        cell.weightLabel.text = cellText + AllConstants.kb.rawValue
+        cell.weightLabel.text = cellText + AllConstants.kb
         
         return cell
     }
@@ -124,11 +124,11 @@ class MainTableViewController: UITableViewController, FileDirectoryInput {
         
         switch cell.typeLabel.text {
             
-        case (Type.folder).rawValue:
+        case Type.folder:
             presenter.showFolder(item: items[indexPath.row] as! FolderModel)
-        case (Type.text).rawValue:
+        case Type.text:
             presenter.showText(item: items[indexPath.row] as! TextFileModel)
-        case (Type.media).rawValue:
+        case Type.media:
             presenter.showMedia(item: items[indexPath.row] as! MediaModel)
         default:
             return
@@ -137,14 +137,14 @@ class MainTableViewController: UITableViewController, FileDirectoryInput {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let delete = UITableViewRowAction(style: .default, title: AllConstants.delete.rawValue) { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .default, title: AllConstants.delete) { (action, indexPath) in
         
             self.presenter.deleteItem(self.items[indexPath.row], self.item)
             self.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
-        let edit = UITableViewRowAction(style: .normal, title: AllConstants.editing.rawValue) { (action, indexPaths) in
+        let edit = UITableViewRowAction(style: .normal, title: AllConstants.editing) { (action, indexPaths) in
             
             self.presenter.showEditNameAlert(self.items[indexPath.row], self.item)
             tableView.reloadData()

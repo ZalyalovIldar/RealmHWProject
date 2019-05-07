@@ -19,10 +19,6 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         initItems()
     }
@@ -36,7 +32,7 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
         }
         if let media = currentObject as? MediaModel {
             
-            initTextLabel(text: AllConstants.empty.rawValue)
+            initTextLabel(text: AllConstants.empty)
             initMedia(media: media)
         }
     }
@@ -58,15 +54,15 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
     /// - Parameter sender: UIBarButtonItem
     @IBAction func editContent(_ sender: UIBarButtonItem) {
         
-        if let _ = currentObject as? TextFileModel {
+        if currentObject is TextFileModel {
             
-            let alert = UIAlertController(title: AllConstants.editing.rawValue, message: AllConstants.enterContent.rawValue, preferredStyle: .alert)
+            let alert = UIAlertController(title: AllConstants.editing, message: AllConstants.enterContent, preferredStyle: .alert)
             alert.addTextField { (textField : UITextField!) -> Void in
-                textField.placeholder =  AllConstants.content.rawValue
+                textField.placeholder =  AllConstants.content
             }
             
             let textField = alert.textFields?[0]
-            let ok = UIAlertAction(title: AllConstants.ok.rawValue, style: .default) { (action) in
+            let ok = UIAlertAction(title: AllConstants.ok, style: .default) { (action) in
                 if textField?.text?.isEmpty == false {
                     self.textLabel?.text = textField?.text
                     self.presenter.performTransaction {
@@ -81,18 +77,18 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
             self.present(alert, animated: true, completion: nil)
         }
         
-        if let _ = currentObject as? MediaModel {
+        if currentObject is MediaModel {
             
-            let alert = UIAlertController(title: AllConstants.source.rawValue, message: nil, preferredStyle: .actionSheet)
-            let download = UIAlertAction(title: AllConstants.download.rawValue, style: .default) { (action) in
+            let alert = UIAlertController(title: AllConstants.source, message: nil, preferredStyle: .actionSheet)
+            let download = UIAlertAction(title: AllConstants.download, style: .default) { (action) in
                 
-                let alert = UIAlertController(title: AllConstants.download.rawValue, message: AllConstants.url.rawValue, preferredStyle: .alert)
+                let alert = UIAlertController(title: AllConstants.download, message: AllConstants.url, preferredStyle: .alert)
                 alert.addTextField { (textField : UITextField!) -> Void in
-                    textField.placeholder = AllConstants.urlPlaceholder.rawValue
+                    textField.placeholder = AllConstants.urlPlaceholder
                 }
                 
                 let textField = alert.textFields?[0]
-                let ok = UIAlertAction(title: AllConstants.ok.rawValue, style: .default) { (action) in
+                let ok = UIAlertAction(title: AllConstants.ok, style: .default) { (action) in
                     if textField?.text?.isEmpty == false {
                         self.mediaImageView?.sd_setImage(with: URL(string: (textField?.text)!), completed: nil)
                         self.presenter.saveImage((textField?.text)!, item: self.currentObject)
@@ -105,11 +101,11 @@ class DetailViewController: UIViewController, DetailViewControllerInput, UIImage
                 
             }
             
-            let photoLibAction = UIAlertAction(title: AllConstants.photo.rawValue, style: .default) { (action) in
+            let photoLibAction = UIAlertAction(title: AllConstants.photo, style: .default) { (action) in
                 self.chooseImagePickerAction(source: .photoLibrary)
             }
             
-            let cancel = UIAlertAction(title: AllConstants.cancel.rawValue, style: .cancel, handler: nil)
+            let cancel = UIAlertAction(title: AllConstants.cancel, style: .cancel, handler: nil)
             alert.addAction(download)
             alert.addAction(photoLibAction)
             alert.addAction(cancel)
